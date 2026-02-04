@@ -1,0 +1,16 @@
+{
+    "name": "free-epic-games",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "license": "ISC",
+    "author": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node --env-file=.env src/index.js"
+    },
+    "devDependencies": {
+        "discord.js": "^14.25.1"
+    }
+}
