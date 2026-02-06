@@ -21,7 +21,7 @@ export const loginWithDiscord = () => {
 };
 
 const fetchPreviouslyNotifiedGames = async (channel) => {
-    const messages = await channel.messages.fetch({ limit: 2, cache: false });
+    const messages = await channel.messages.fetch({ limit: 5, cache: false });
     return messages.map((x) => {
         const hasEmbeds = x.embeds.length;
         if (hasEmbeds) {
