@@ -1,9 +1,8 @@
 name: Check for Free Epic Games
 
-on: workflow_dispatch
-# on:
-#     schedule:
-#         - cron: '44 8 * * *'
+on:
+    schedule:
+        - cron: '32 16 * * *'
 
 permissions:
     contents: read
