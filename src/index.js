@@ -1,7 +1,7 @@
-import { loginWithDiscord, sendMessage } from "./discord-client.js";
+import { loginWithDiscord } from './discord-client.js';
 
 const run = async () => {
-    const client = loginWithDiscord();
+    loginWithDiscord();
 };
 
 run();
