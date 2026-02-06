@@ -1,8 +1,7 @@
 name: Check for Free Epic Games
 on:
     schedule:
-        - cron: '0/5 * * * *'
-        # - cron: '44 8 * * *'
+        - cron: '44 8 * * *'
 
 permissions:
     contents: read
