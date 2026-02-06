@@ -1,8 +1,9 @@
 run with `pnpm start`
 
-## TODO 
-- [x] sign bot into discord server
-- [x] construct discord embed
-- [ ] setup CRON job on GHA
-- [ ] Setup DuckDB to only post games only if they haven't been seen before
-  - [ ] probably need an update repo action for this to push the db changes to `main`
+runs at via GHA `schedule` event @ 9:45am, daily. PDT will run 1 hour earlier.
+
+## TODO
+- [ ] convert to typescript, build with `esbuild` into `index.cjs`
+  - [ ] update action to build before run
+- [ ] add contract tests, maybe unit tests
+- [ ] Re-enable Advanced Security once script is stable

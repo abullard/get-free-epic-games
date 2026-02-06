@@ -1,8 +1,8 @@
 name: Check for Free Epic Games
 on:
     schedule:
-        # - cron: '44 8 * * *'
         - cron: '0/5 * * * *'
+        # - cron: '44 8 * * *'
 
 permissions:
     contents: read
@@ -13,9 +13,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
-              with:
-                  ref: ${{ github.event.pull_request.head.ref }}
-                  repository: ${{ github.event.pull_request.head.repo.full_name }}
 
             - uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061
               with:
