@@ -1,7 +1,9 @@
 name: Check for Free Epic Games
-on:
-    schedule:
-        - cron: '44 8 * * *'
+
+on: workflow_dispatch
+# on:
+#     schedule:
+#         - cron: '44 8 * * *'
 
 permissions:
     contents: read
@@ -24,3 +26,6 @@ jobs:
             - run: pnpm install
 
             - run: pnpm start
+              env:
+                  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+                  CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
