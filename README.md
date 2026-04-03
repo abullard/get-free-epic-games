@@ -9,3 +9,5 @@ run with `pnpm start`
 - [ ] add contract tests, maybe unit tests
 - [x] Re-enable Advanced Security once script is stable
 - [ ] Properly setup channel restrictions but grant the bot role access
+
+- [ ] Cycle this checkbox to count as a repository contribution & avoid the CRON workflow shutdown
