@@ -1,3 +1,11 @@
+export const mapFreeEpicGames = async () => {
+    const games = await fetchFreeEpicGames();
+    const responseElements = games.data.Catalog.searchStore.elements;
+    const freeGames = responseElements.filter((item) => item.price.totalPrice.discountPrice === 0);
+
+    return freeGames.map(mapEpicGameToEmbed);
+};
+
 const mapEpicGameToEmbed = (freeGame) => {
     return {
         title: freeGame.title,
@@ -6,14 +14,6 @@ const mapEpicGameToEmbed = (freeGame) => {
         slug: freeGame.catalogNs.mappings.find((om) => om.pageType === 'productHome')?.pageSlug,
         thumbnail: freeGame.keyImages.find((ki) => ki.type === 'OfferImageWide')?.url,
     };
-};
-
-export const mapFreeEpicGames = async () => {
-    const games = await fetchFreeEpicGames();
-    const responseElements = games.data.Catalog.searchStore.elements;
-    const freeGames = responseElements.filter((item) => item.price.totalPrice.discountPrice === 0);
-
-    return freeGames.map(mapEpicGameToEmbed);
 };
 
 const fetchFreeEpicGames = async () => {

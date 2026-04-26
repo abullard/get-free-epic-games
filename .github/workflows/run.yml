@@ -24,7 +24,7 @@ jobs:
 
             - run: pnpm install
 
-            - run: pnpm start
+            - run: pnpm start:wol
               env:
                   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
                   CHANNEL_ID: ${{ secrets.CHANNEL_ID }}

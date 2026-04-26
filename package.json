@@ -6,9 +6,9 @@
     "license": "MIT",
     "author": "abullard",
     "scripts": {
-        "start:debug": "node --env-file=.env src/index.js",
-        "start": "node src/index.js",
-        "start:necro": "node src/necro/index-necro.js"
+        "start:debug:wol": "node --env-file=.env src/warriors-of-light/index-wol.js",
+        "start:wol": "node src/warriors-of-light/index-wol.js",
+        "start:necro": "node src/necro-hollow/index-necro.js"
     },
     "dependencies": {
         "discord.js": "^14.26.3",
