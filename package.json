@@ -12,5 +12,8 @@
     },
     "devDependencies": {
         "discord.js": "^14.25.1"
+    },
+    "dependencies": {
+        "ky": "^2.0.2"
     }
 }
