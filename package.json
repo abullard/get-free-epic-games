@@ -11,7 +11,6 @@
         "start:necro": "node src/necro-hollow/index-necro.js"
     },
     "dependencies": {
-        "discord.js": "^14.26.3",
-        "ky": "^2.0.2"
+        "discord.js": "^14.26.3"
     }
 }
