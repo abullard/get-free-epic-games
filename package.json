@@ -1,19 +1,17 @@
 {
     "name": "free-epic-games",
     "version": "1.0.0",
-    "description": "",
+    "description": "random discord bots that run on a CRON workflow",
     "type": "module",
-    "license": "ISC",
-    "author": "",
-    "main": "index.js",
+    "license": "MIT",
+    "author": "abullard",
     "scripts": {
         "start:debug": "node --env-file=.env src/index.js",
-        "start": "node src/index.js"
-    },
-    "devDependencies": {
-        "discord.js": "^14.25.1"
+        "start": "node src/index.js",
+        "start:necro": "node src/necro/index-necro.js"
     },
     "dependencies": {
+        "discord.js": "^14.26.3",
         "ky": "^2.0.2"
     }
 }
