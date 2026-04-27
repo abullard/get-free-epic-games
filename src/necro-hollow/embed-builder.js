@@ -1,9 +1,23 @@
 import { EmbedBuilder } from 'discord.js';
-import { necroHollowZodiacChannelMap } from './data.js';
+
+const necroHollowZodiacChannelMap = {
+    'Aries': process.env.CHANNEL_ID_ARIES,
+    'Taurus': process.env.CHANNEL_ID_TAURUS,
+    'Gemini': process.env.CHANNEL_ID_GEMINI,
+    'Cancer': process.env.CHANNEL_ID_CANCER,
+    'Leo': process.env.CHANNEL_ID_LEO,
+    'Virgo': process.env.CHANNEL_ID_VIRGO,
+    'Libra': process.env.CHANNEL_ID_LIBRA,
+    'Scorpio': process.env.CHANNEL_ID_SCORPIO,
+    'Sagittarius': process.env.CHANNEL_ID_SAGITTARIUS,
+    'Capricorn': process.env.CHANNEL_ID_CAPRICORN,
+    'Aquarius': process.env.CHANNEL_ID_AQUARIUS,
+    'Pisces': process.env.CHANNEL_ID_PISCES,
+};
 
 export const buildAndSendEmbeds = async (client, horoscopes) => {
     const horoscopeAndChannel = horoscopes.map(async (h) => {
-        const channelId = necroHollowZodiacChannelMap[h.zodiac];
+        const channelId = necroHollowZodiacChannelMap[h.sign];
         const channelRef = await client.channels.fetch(channelId);
         
         return {
@@ -12,7 +26,7 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
         }
     });
 
-    const promises = horoscopeAndChannel.map((hac) => buildGameEmbeds(hac));
+    const promises = horoscopeAndChannel.map(async (hac) => await buildGameEmbeds(hac));
 
     try {
         await Promise.all(promises);
@@ -21,21 +35,23 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
     }
 };
 
-const buildGameEmbeds = (horoscopeAndChannel) => {
-    const channel = horoscopeAndChannel.channelRef;
-    
+const buildGameEmbeds = async (horoscopeAndChannel) => {
+    const {sign, date, horoscope, channelRef} = await horoscopeAndChannel;
+
+    // TODO: add mention of role, need to put ROLE_IDs in secrets
+    // add photo?
     const gameEmbed = new EmbedBuilder()
-        .setColor(horoscopeAndChannel.color)
-        .setTitle(horoscopeAndChannel.zodiac)
-        .setDescription(horoscopeAndChannel.horoscope)
-        // .setImage(horoscopeAndChannel.thumbnail)
+        .setColor(0xDAB5F8)
+        .setTitle(sign)
+        .setDescription(`<@&${'1496981510367088762'}> ${horoscope}`)
+        .setImage(horoscopeAndChannel.thumbnail)
         .addFields(
             {
                 name: 'date',
-                value: horoscopeAndChannel.date,
+                value: date,
                 inline: true,
             }
         );
 
-    return channel.send({ embeds: [gameEmbed] });
+    return channelRef.send({ embeds: [gameEmbed] });
 };

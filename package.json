@@ -8,6 +8,7 @@
     "scripts": {
         "start:debug:wol": "node --env-file=.env src/warriors-of-light/index-wol.js",
         "start:wol": "node src/warriors-of-light/index-wol.js",
+        "start:debug:necro": "node --env-file=.env src/necro-hollow/index-necro.js",
         "start:necro": "node src/necro-hollow/index-necro.js"
     },
     "dependencies": {
