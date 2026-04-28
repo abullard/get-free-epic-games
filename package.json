@@ -6,10 +6,20 @@
     "license": "MIT",
     "author": "abullard",
     "scripts": {
-        "start:debug:wol": "node --env-file=.env src/warriors-of-light/index-wol.js",
-        "start:wol": "node src/warriors-of-light/index-wol.js",
-        "start:debug:necro": "node --env-file=.env src/necro-hollow/index-necro.js",
-        "start:necro": "node src/necro-hollow/index-necro.js"
+        "start:debug:wol": "node --env-file=.env src/warriors-of-light/index.js",
+        "start:wol": "node src/warriors-of-light/index.js",
+        "start:debug:necro:horoscope": "node --env-file=.env src/necro-hollow/sunday-horoscope/index.js",
+        "start:necro:horoscope": "node src/necro-hollow/sunday-horoscope/index.js",
+        "start:debug:necro:tarot": "node --env-file=.env src/necro-hollow/tarot-reading/index.js",
+        "start:necro:tarot": "node src/necro-hollow/tarot-reading/index.js"
+    },
+    "scriptDescriptions": {
+        "start:debug:wol": "Local debug of free-epic-games bot",
+        "start:wol": "Production GHA workflow runner of free-epic-games bot",
+        "start:debug:necro:horoscope": "Local debug of horoscope reading bot",
+        "start:necro:horoscope": "Production GHA workflow runner of horoscope reading bot",
+        "start:debug:necro:tarot": "Local debug of tarot reading bot",
+        "start:necro:tarot": "Production GHA workflow runner of tarot reading bot"
     },
     "dependencies": {
         "discord.js": "^14.26.3"

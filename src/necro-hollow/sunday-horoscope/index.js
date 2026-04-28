@@ -1,4 +1,4 @@
-import { loginWithDiscord } from '../discord-client.js';
+import { loginWithDiscord } from '../../discord-client.js';
 import { readyHandler } from './handler.js';
 
 const run = async () => {
