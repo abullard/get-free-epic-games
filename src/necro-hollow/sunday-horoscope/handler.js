@@ -58,11 +58,11 @@ export const readyHandler = async (readyClient) => {
         //     sign: 'Capricorn',
         //     horoscope: "Today, Capricorn, you might encounter some outrageous rumors that are far from the truth. Upon reflection, you'll realize how illogical and absurd they truly are. Yet, the individual sharing this information may be so charismatic and convincing that you could find yourself momentarily swayed. It's essential to verify the facts in these instances. By doing so, you'll remain anchored in reality and avoid getting swept away by fanciful tales."
         // },
-        // {
-        //     date: '2026-04-26',
-        //     sign: 'Aquarius',
-        //     horoscope: 'Aquarius, today you might find yourself drawn to tackle your financial matters—settling bills, making deposits, and mapping out next month’s budget. However, your enthusiasm may be lacking. Your thoughts are likely wandering towards more captivating endeavors. Pushing yourself to focus on finances could lead to frustration and distraction, making it feel like a futile effort. Consider holding off for a few days; you’ll likely feel more grounded and ready to handle these tasks then.'
-        // },
+        {
+            date: '2026-04-26',
+            sign: 'Aquarius',
+            horoscope: 'Aquarius, today you might find yourself drawn to tackle your financial matters—settling bills, making deposits, and mapping out next month’s budget. However, your enthusiasm may be lacking. Your thoughts are likely wandering towards more captivating endeavors. Pushing yourself to focus on finances could lead to frustration and distraction, making it feel like a futile effort. Consider holding off for a few days; you’ll likely feel more grounded and ready to handle these tasks then.'
+        },
         // {
         //     date: '2026-04-26',
         //     sign: 'Pisces',

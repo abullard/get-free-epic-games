@@ -1,17 +1,20 @@
 import { EmbedBuilder, AttachmentBuilder } from 'discord.js';
-import { necroHollowZodiacChannelMap } from 'data.js';
+import { necroHollowZodiacChannelMap } from './data.js';
 import { join } from 'path';
 
 export const buildAndSendEmbeds = async (client, horoscopes) => {
     const horoscopeAndChannel = horoscopes.map(async (h) => {
-        const channelId = necroHollowZodiacChannelMap[h.sign];
+        const zodiac = necroHollowZodiacChannelMap[h.sign];
+        const roleId = zodiac.roleId;
+        const channelId = zodiac.channelId;
         const channelRef = await client.channels.fetch(channelId);
-        const image = join('src', 'necro-hollow', 'sunday-horoscope', 'assets', h.sign) + '.jpg';
+        const image = join('src', 'necro-hollow', 'sunday-horoscope', 'assets', h.sign) + '.png';
 
         return {
             ...h,
-            image,
+            roleId, 
             channelRef,
+            image
         }
     });
 
@@ -25,17 +28,13 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
 };
 
 const buildGameEmbeds = async (horoscopeAndChannel) => {
-    const {sign, date, horoscope, channelRef, image} = await horoscopeAndChannel;
+    const {sign, date, horoscope, roleId, channelRef, image, } = await horoscopeAndChannel;
     const zodiacPhoto = new AttachmentBuilder(image);
-
-    // TODO: add mention of role, need to put ROLE_IDs in secrets
-
-    // add photo?
     const gameEmbed = new EmbedBuilder()
         .setColor(0xDAB5F8)
         .setTitle(sign)
-        .setDescription(`<@&${'1496981510367088762'}> ${horoscope}`)
-        .setImage(`attachment://${sign}.jpg`)
+        .setDescription(`<@&${roleId}> ${horoscope}`)
+        .setImage(`attachment://${sign}.png`)
         .addFields(
             {
                 name: 'Date',
