@@ -13,7 +13,7 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
         return {
             ...h,
             roleId: process.env[`ROLE_ID_${zodiac.toUpperCase()}`],
-            channelRef: await client.channels.fetch(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]),
+            channelRef: await client.channels.fetch(channelId),
             image: join('src', 'necro-hollow', 'sunday-horoscope', 'assets', zodiac) + '.png'
         }
     });
