@@ -5,8 +5,8 @@ import { join } from 'path';
 export const buildAndSendEmbeds = async (client, horoscopes) => {
     const horoscopeAndChannel = horoscopes.map(async (h) => {
         const zodiac = h.sign;
+        console.log('AJB: zodiac.toUpperCase(): ', zodiac.toUpperCase());
         const channelId = String(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]).trim();
-
 
         return {
             ...h,
