@@ -3,20 +3,19 @@ import { necroHollowZodiacChannelMap } from './types.js';
 import { join } from 'path';
 
 export const buildAndSendEmbeds = async (client, horoscopes) => {
-    const horoscopeAndChannel = horoscopes.map(async (h) => {
+    const horoscopeAndChannel = horoscopes.map((h) => {
         const zodiac = h.sign;
-        console.log('AJB: zodiac.toUpperCase(): ', zodiac.toUpperCase());
         const channelId = String(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]).trim();
 
         return {
             ...h,
             roleId: process.env[`ROLE_ID_${zodiac.toUpperCase()}`],
-            channelRef: await client.channels.fetch(channelId),
+            channelId: String(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]).trim(),
             image: join('src', 'necro-hollow', 'sunday-horoscope', 'assets', zodiac) + '.png'
         }
     });
 
-    const promises = horoscopeAndChannel.map(async (hac) => await buildGameEmbeds(hac));
+    const promises = horoscopeAndChannel.map(async (hac) => await buildGameEmbeds(client, hac));
 
     try {
         await Promise.all(promises);
@@ -25,12 +24,14 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
     }
 };
 
-const buildGameEmbeds = async (horoscopeAndChannel) => {
-    const { sign, date, horoscope, roleId, channelRef, image } = await horoscopeAndChannel;
-
+const buildGameEmbeds = async (client, horoscopeAndChannel) => {
+    const { sign, date, horoscope, roleId, channelId, image } = horoscopeAndChannel;
     console.log('AJB: buildGameEmbeds sign: ', sign);
+    console.log('AJB: channelId: ', typeof channelId);
 
+    const channelRef = await client.channels.fetch(channelId);
     const zodiacPhoto = new AttachmentBuilder(image);
+
     const gameEmbed = new EmbedBuilder()
         .setColor(0xDAB5F8)
         .setTitle(sign)
