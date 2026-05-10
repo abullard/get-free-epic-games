@@ -5,6 +5,10 @@ import { join } from 'path';
 export const buildAndSendEmbeds = async (client, horoscopes) => {
     const horoscopeAndChannel = horoscopes.map(async (h) => {
         const zodiac = h.sign;
+        const channelId = String(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]).trim();
+
+        console.log('AJB: zodiac: ', zodiac);
+        console.log('AJB: typeof channelId: ', typeof channelId);
 
         return {
             ...h,
