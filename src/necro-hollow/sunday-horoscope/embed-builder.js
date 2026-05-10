@@ -7,8 +7,6 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
         const zodiac = h.sign;
         const channelId = String(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]).trim();
 
-        console.log('AJB: zodiac: ', zodiac);
-        console.log('AJB: typeof channelId: ', typeof channelId);
 
         return {
             ...h,
@@ -29,6 +27,9 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
 
 const buildGameEmbeds = async (horoscopeAndChannel) => {
     const { sign, date, horoscope, roleId, channelRef, image } = await horoscopeAndChannel;
+
+    console.log('AJB: buildGameEmbeds sign: ', sign);
+
     const zodiacPhoto = new AttachmentBuilder(image);
     const gameEmbed = new EmbedBuilder()
         .setColor(0xDAB5F8)
