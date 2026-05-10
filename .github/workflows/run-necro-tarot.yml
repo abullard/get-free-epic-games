@@ -1,0 +1,31 @@
+name: Stream Reading
+
+on:
+    schedule:
+        - cron: '0 21 * * 2,4'
+    workflow-dispatch:
+    
+permissions:
+    contents: read
+
+jobs:
+    pull-tarot-and-send-message:
+        name: Start
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
+
+            - uses: pnpm/action-setup@91ab88e2619ed1f46221f0ba42d1492c02baf788
+              with:
+                  version: 10
+
+            - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f
+              with:
+                  node-version-file: .nvmrc
+
+            - run: pnpm install
+
+            - run: pnpm start:necro:tarot
+              env:
+                  DISCORD_TOKEN_NECRO: ${{ secrets.DISCORD_TOKEN_NECRO }}
+                  CHANNEL_ID_TAROT: ${{ secrets.CHANNEL_ID_TAROT }}

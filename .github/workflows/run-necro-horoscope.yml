@@ -1,0 +1,53 @@
+name: Weekly Horoscope
+
+on:
+    schedule:
+        - cron: '32 16 * * 0'
+    
+permissions:
+    contents: read
+
+jobs:
+    fetch-horoscope-and-send-message:
+        name: Start
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
+
+            - uses: pnpm/action-setup@91ab88e2619ed1f46221f0ba42d1492c02baf788
+              with:
+                  version: 10
+
+            - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f
+              with:
+                  node-version-file: .nvmrc
+
+            - run: pnpm install
+
+            - run: pnpm start:necro:horoscope
+              env:
+                  DISCORD_TOKEN_NECRO: ${{ secrets.DISCORD_TOKEN_NECRO }}
+                  CHANNEL_ID_AQUARIUS: ${{ secrets.CHANNEL_ID_AQUARIUS }}
+                  CHANNEL_ID_ARIES: ${{ secrets.CHANNEL_ID_ARIES }}
+                  CHANNEL_ID_CANCER: ${{ secrets.CHANNEL_ID_CANCER }}
+                  CHANNEL_ID_CAPRICORN: ${{ secrets.CHANNEL_ID_CAPRICORN }}
+                  CHANNEL_ID_GEMINI: ${{ secrets.CHANNEL_ID_GEMINI }}
+                  CHANNEL_ID_LEO: ${{ secrets.CHANNEL_ID_LEO }}
+                  CHANNEL_ID_LIBRA: ${{ secrets.CHANNEL_ID_LIBRA }}
+                  CHANNEL_ID_PISCES: ${{ secrets.CHANNEL_ID_PISCES }}
+                  CHANNEL_ID_SAGITTARIUS: ${{ secrets.CHANNEL_ID_SAGITTARIUS }}
+                  CHANNEL_ID_SCORPIO: ${{ secrets.CHANNEL_ID_SCORPIO }}
+                  CHANNEL_ID_TAURUS: ${{ secrets.CHANNEL_ID_TAURUS }}
+                  CHANNEL_ID_VIRGO: ${{ secrets.CHANNEL_ID_VIRGO }}
+                  ROLE_ID_AQUARIUS: ${{ secrets.ROLE_ID_AQUARIUS }}
+                  ROLE_ID_ARIES: ${{ secrets.ROLE_ID_ARIES }}
+                  ROLE_ID_CANCER: ${{ secrets.ROLE_ID_CANCER }}
+                  ROLE_ID_CAPRICORN: ${{ secrets.ROLE_ID_CAPRICORN }}
+                  ROLE_ID_GEMINI: ${{ secrets.ROLE_ID_GEMINI }}
+                  ROLE_ID_LEO: ${{ secrets.ROLE_ID_LEO }}
+                  ROLE_ID_LIBRA: ${{ secrets.ROLE_ID_LIBRA }}
+                  ROLE_ID_PISCES: ${{ secrets.ROLE_ID_PISCES }}
+                  ROLE_ID_SAGITTARIUS: ${{ secrets.ROLE_ID_SAGITTARIUS }}
+                  ROLE_ID_SCORPIO: ${{ secrets.ROLE_ID_SCORPIO }}
+                  ROLE_ID_TAURUS: ${{ secrets.ROLE_ID_TAURUS }}
+                  ROLE_ID_VIRGO: ${{ secrets.ROLE_ID_VIRGO }}
