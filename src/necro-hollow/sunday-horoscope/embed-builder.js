@@ -26,8 +26,6 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
 
 const buildGameEmbeds = async (client, horoscopeAndChannel) => {
     const { sign, date, horoscope, roleId, channelId, image } = horoscopeAndChannel;
-    console.log('AJB: buildGameEmbeds sign: ', sign);
-    console.log('AJB: channelId: ', typeof channelId);
 
     const channelRef = await client.channels.fetch(channelId);
     const zodiacPhoto = new AttachmentBuilder(image);
