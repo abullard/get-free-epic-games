@@ -1,12 +1,12 @@
 import * as cheerio from 'cheerio';
-import { necroHollowZodiacChannelMap } from './data.js';
+import { necroHollowZodiacChannelMap } from './types.js';
 
 export const scrapeHoroscope = async () => {
     const dailyHoroscopes = [];
 
     for (const sign of Object.keys(necroHollowZodiacChannelMap)) {
-        const signData = necroHollowZodiacChannelMap[sign];
-        const url = `https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-today.aspx?sign=${signData.queryParamNumber}`;
+        const signNum = necroHollowZodiacChannelMap[sign];
+        const url = `https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-today.aspx?sign=${signNum}`;
         const html = await (await fetch(url)).text();
 
         dailyHoroscopes.push({
