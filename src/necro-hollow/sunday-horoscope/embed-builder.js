@@ -5,11 +5,15 @@ import { join } from 'path';
 export const buildAndSendEmbeds = async (client, horoscopes) => {
     const horoscopeAndChannel = horoscopes.map(async (h) => {
         const zodiac = h.sign;
+        const channelId = String(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]).trim();
+
+        console.log('AJB: typeof channelId: ', typeof channelId);
+        console.log('AJB: channelId: ', channelId);
 
         return {
             ...h,
             roleId: process.env[`ROLE_ID_${zodiac.toUpperCase()}`],
-            channelRef: await client.channels.fetch(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]),
+            channelRef: await client.channels.fetch(channelId),
             image: join('src', 'necro-hollow', 'sunday-horoscope', 'assets', zodiac) + '.png'
         }
     });
