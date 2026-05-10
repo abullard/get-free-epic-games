@@ -7,8 +7,8 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
         const zodiac = h.sign;
         const channelId = String(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]).trim();
 
+        console.log('AJB: zodiac: ', zodiac);
         console.log('AJB: typeof channelId: ', typeof channelId);
-        console.log('AJB: channelId: ', channelId);
 
         return {
             ...h,
