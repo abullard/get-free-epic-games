@@ -28,7 +28,7 @@ jobs:
             - run: pnpm start:necro:horoscope
               env:
                   DISCORD_TOKEN_NECRO: ${{ secrets.DISCORD_TOKEN_NECRO }}
-                  CHANNEL_ID_AQUARIUS': ${{ secrets.CHANNEL_ID_AQUARIUS }}
+                  CHANNEL_ID_AQUARIUS: ${{ secrets.CHANNEL_ID_AQUARIUS }}
                   CHANNEL_ID_ARIES: ${{ secrets.CHANNEL_ID_ARIES }}
                   CHANNEL_ID_CANCER: ${{ secrets.CHANNEL_ID_CANCER }}
                   CHANNEL_ID_CAPRICORN: ${{ secrets.CHANNEL_ID_CAPRICORN }}
