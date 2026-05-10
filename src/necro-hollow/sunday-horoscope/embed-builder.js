@@ -1,20 +1,16 @@
 import { EmbedBuilder, AttachmentBuilder } from 'discord.js';
-import { necroHollowZodiacChannelMap } from './data.js';
+import { necroHollowZodiacChannelMap } from './types.js';
 import { join } from 'path';
 
 export const buildAndSendEmbeds = async (client, horoscopes) => {
     const horoscopeAndChannel = horoscopes.map(async (h) => {
-        const zodiac = necroHollowZodiacChannelMap[h.sign];
-        const roleId = zodiac.roleId;
-        const channelId = zodiac.channelId;
-        const channelRef = await client.channels.fetch(channelId);
-        const image = join('src', 'necro-hollow', 'sunday-horoscope', 'assets', h.sign) + '.png';
+        const zodiac = h.sign;
 
         return {
             ...h,
-            roleId, 
-            channelRef,
-            image
+            roleId: process.env[`ROLE_ID_${zodiac.toUpperCase()}`],
+            channelRef: await client.channels.fetch(process.env[`CHANNEL_ID_${zodiac.toUpperCase()}`]),
+            image: join('src', 'necro-hollow', 'sunday-horoscope', 'assets', zodiac) + '.png'
         }
     });
 
@@ -28,7 +24,7 @@ export const buildAndSendEmbeds = async (client, horoscopes) => {
 };
 
 const buildGameEmbeds = async (horoscopeAndChannel) => {
-    const {sign, date, horoscope, roleId, channelRef, image, } = await horoscopeAndChannel;
+    const { sign, date, horoscope, roleId, channelRef, image } = await horoscopeAndChannel;
     const zodiacPhoto = new AttachmentBuilder(image);
     const gameEmbed = new EmbedBuilder()
         .setColor(0xDAB5F8)
