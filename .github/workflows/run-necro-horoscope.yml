@@ -2,7 +2,7 @@ name: Weekly Horoscope
 
 on:
     schedule:
-        - cron: '32 16 * * 0'
+        - cron: '32 16 * * *'
     
 permissions:
     contents: read
@@ -39,15 +39,3 @@ jobs:
                   CHANNEL_ID_SCORPIO: ${{ secrets.CHANNEL_ID_SCORPIO }}
                   CHANNEL_ID_TAURUS: ${{ secrets.CHANNEL_ID_TAURUS }}
                   CHANNEL_ID_VIRGO: ${{ secrets.CHANNEL_ID_VIRGO }}
-                  ROLE_ID_AQUARIUS: ${{ secrets.ROLE_ID_AQUARIUS }}
-                  ROLE_ID_ARIES: ${{ secrets.ROLE_ID_ARIES }}
-                  ROLE_ID_CANCER: ${{ secrets.ROLE_ID_CANCER }}
-                  ROLE_ID_CAPRICORN: ${{ secrets.ROLE_ID_CAPRICORN }}
-                  ROLE_ID_GEMINI: ${{ secrets.ROLE_ID_GEMINI }}
-                  ROLE_ID_LEO: ${{ secrets.ROLE_ID_LEO }}
-                  ROLE_ID_LIBRA: ${{ secrets.ROLE_ID_LIBRA }}
-                  ROLE_ID_PISCES: ${{ secrets.ROLE_ID_PISCES }}
-                  ROLE_ID_SAGITTARIUS: ${{ secrets.ROLE_ID_SAGITTARIUS }}
-                  ROLE_ID_SCORPIO: ${{ secrets.ROLE_ID_SCORPIO }}
-                  ROLE_ID_TAURUS: ${{ secrets.ROLE_ID_TAURUS }}
-                  ROLE_ID_VIRGO: ${{ secrets.ROLE_ID_VIRGO }}
