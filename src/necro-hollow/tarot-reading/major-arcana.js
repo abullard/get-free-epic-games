@@ -19,7 +19,7 @@ export const pullThreeMajorArcana = () => {
         'The Fool', 'The Magician', 'The High Priestess', 'The Empress', 'The Emperor',
         'The Hierophant', 'The Lovers', 'The Chariot', 'Strength', 'The Hermit',
         'Wheel of Fortune', 'Justice', 'The Hanged Man', 'Death', 'Temperance',
-        'The Devil', 'The Tower', 'The StaEr', 'The Moon', 'The Sun',
+        'The Devil', 'The Tower', 'The Star', 'The Moon', 'The Sun',
         'Judgement', 'The World',
     ];
 
@@ -35,42 +35,18 @@ export const pullThreeMajorArcana = () => {
     const thirdAtZeroth = swap(majorArcana, 0, thirdRandom);
     const thirdPull = thirdAtZeroth.shift();
 
-    return [
-        {
+    return {
+        first: {
             orientation: getOrientation(),
             pull: firstPull,
         },
-        {
+        second: {
             orientation: getOrientation(),
             pull: secondPull,
         },
-        {
+        third: {
             orientation: getOrientation(),
             pull: thirdPull
         }
-    ];
+    };
 };
-
-pullThreeMajorArcana();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
