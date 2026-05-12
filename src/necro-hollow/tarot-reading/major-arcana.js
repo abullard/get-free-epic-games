@@ -35,42 +35,18 @@ export const pullThreeMajorArcana = () => {
     const thirdAtZeroth = swap(majorArcana, 0, thirdRandom);
     const thirdPull = thirdAtZeroth.shift();
 
-    return [
-        {
+    return {
+        first: {
             orientation: getOrientation(),
             pull: firstPull,
         },
-        {
+        second: {
             orientation: getOrientation(),
             pull: secondPull,
         },
-        {
+        third: {
             orientation: getOrientation(),
             pull: thirdPull
         }
-    ];
+    };
 };
-
-pullThreeMajorArcana();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
