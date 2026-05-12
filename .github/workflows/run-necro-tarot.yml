@@ -3,7 +3,7 @@ name: Stream Reading
 on:
     schedule:
         - cron: '36 20 * * 1'
-    workflow-dispatch:
+    workflow_dispatch:
     
 permissions:
     contents: read
