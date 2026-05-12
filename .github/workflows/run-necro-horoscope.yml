@@ -3,7 +3,7 @@ name: Weekly Horoscope
 on:
     schedule:
         - cron: '32 10 * * *'
-    workflow-dispatch:
+    workflow_dispatch:
     
 permissions:
     contents: read
