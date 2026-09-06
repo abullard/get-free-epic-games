@@ -1,4 +1,4 @@
-name: Weekly Horoscope
+name: Daily Horoscope
 
 on:
     schedule:
