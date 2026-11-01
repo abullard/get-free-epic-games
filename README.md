@@ -10,4 +10,4 @@ run with `pnpm start`
 - [x] Re-enable Advanced Security once script is stable
 - [ ] Properly setup channel restrictions but grant the bot role access
 
-- [x] Cycle this checkbox to count as a repository contribution & avoid the CRON workflow shutdown
+- [ ] Cycle this checkbox to count as a repository contribution & avoid the CRON workflow shutdown
